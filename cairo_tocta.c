@@ -32,14 +32,14 @@
 tSide ab = {// line 
 			.x1=0.0, .y1=(4.0 * HEIGHT/12.0),
 			.x2=(5.0 * WIDTH/12.0), .y2=(4.0 * HEIGHT/12.0),
-			.weight=2.0, .r=0.0, .g=1.0, .b=0.0,
+			.weight=2.0, .r=0.0, .g=0.0, .b=0.0,
 			// text
 			.tx=(2.0 * WIDTH / 12.0), .ty=(3.8 * HEIGHT / 12.0),
 			.font_size=12.0};
 			
 tSide ae = {// line 
 			.x1=0.0, .y1=(4.0 * HEIGHT/12.0), 
-			.x2=(4.0 * WIDTH/12.0), .y2=(0.0),
+			.x2=(8.0 * WIDTH/12.0), .y2=(0.0),
 			.weight=5.0, .r=1.0, .g=0.0, .b=0.0,
 			// text
 			.tx=(2.5*WIDTH/12.0), .ty=(2.0*HEIGHT/12.0), 
@@ -47,68 +47,76 @@ tSide ae = {// line
 			
 tSide af = {// line 
 			.x1=0.0, .y1=(4.0 * HEIGHT/12.0), 
-			.x2=(8.0 * WIDTH/12.0), .y2=(12.0 * HEIGHT/12.0),
+			.x2=(4.0 * WIDTH/12.0), .y2=(12.0 * HEIGHT/12.0),
 			.weight=5.0, .r=0.0, .g=0.0, .b=1.0,
 			// text
-			.tx=(2.0*WIDTH/12.0), .ty=(8.0*HEIGHT/12.0), .font_size=12.0};
-//-----------------------------------------------
+			.tx=(2.0*WIDTH/12.0), .ty=(7.0*HEIGHT/12.0), .font_size=12.0};
+
 tSide bc = {// line 
 			.x1=(5.0 * WIDTH/12.0), .y1=(4.0 * HEIGHT/12.0), 
 			.x2=(12.0 * WIDTH/12.0), .y2=(8.0 * HEIGHT/12.0),
-			.weight=2.0, .r=0.2, .g=0.4, .b=0.6,
+			.weight=2.0, .r=0.0, .g=0.0, .b=0.0,
 			// text
 			.tx=(8.5 * WIDTH / 12.0), .ty=(5.6 * HEIGHT / 12.0), 
 			.font_size=12.0};
 
 tSide be = {// line 
-			.x1=0.0, .y1=0.0, .x2=0.0, .y2=0.0,
-			.weight=2.0, .r=0.2, .g=0.4, .b=0.6,
+			.x1=(5.0 * WIDTH/12.0), .y1=(4.0 * HEIGHT/12.0), 
+			.x2=(8.0 * WIDTH/12.0), .y2=(0.0),
+			.weight=2.0, .r=1.0, .g=0.0, .b=0.0,
 			// text
-			.tx=0.0, .ty=0.0, .font_size=12.0};
+			.tx=6.0*WIDTH/12.0, .ty=3.0*HEIGHT/12.0, .font_size=12.0};
 
 tSide bf = {// line 
-			.x1=0.0, .y1=0.0, .x2=0.0, .y2=0.0,
-			.weight=2.0, .r=0.2, .g=0.4, .b=0.6,
+			.x1=(5.0 * WIDTH/12.0), .y1=(4.0 * HEIGHT/12.0), 
+			.x2=(4.0 * WIDTH/12.0), .y2=(12.0*HEIGHT/12.0),
+			.weight=2.0, .r=0.0, .g=0.0, .b=1.0,
 			// text
-			.tx=0.0, .ty=0.0, .font_size=12.0};
-//------------------------------------------------
+			.tx=4.5*WIDTH/12.0, .ty=9.0*HEIGHT/12.0, .font_size=12.0};
+
 tSide cd = {// line 
-			.x1=0.0, .y1=0.0, .x2=0.0, .y2=0.0,
-			.weight=5.0, .r=0.2, .g=0.4, .b=0.6,
+			.x1=(12.0 * WIDTH/12.0), .y1=(8.0 * HEIGHT/12.0), 
+			.x2=(7.0 * WIDTH/12.0), .y2=(8.0 * HEIGHT/12.0),
+			.weight=5.0, .r=0.0, .g=0.0, .b=0.0,
 			// text
 			.tx=(8.5 * WIDTH / 12.0), .ty=(7.8 * HEIGHT / 12.0), 
 			.font_size=12.0};
 
 tSide ce = {// line 
-			.x1=0.0, .y1=0.0, .x2=0.0, .y2=0.0,
-			.weight=5.0, .r=0.2, .g=0.4, .b=0.6,
+			.x1=(12.0 * WIDTH/12.0), .y1=(8.0 * HEIGHT/12.0), 
+			.x2=(8.0 * WIDTH/12.0), .y2=(0.0),
+			.weight=5.0, .r=1.0, .g=0.0, .b=0.0,
 			// text
-			.tx=0.0, .ty=0.0, .font_size=12.0};
+			.tx=(10.0*WIDTH/12.0), .ty=(3.0*HEIGHT/12.0), .font_size=12.0};
 
 tSide cf = {// line 
-			.x1=0.0, .y1=0.0, .x2=0.0, .y2=0.0,
-			.weight=5.0, .r=0.2, .g=0.4, .b=0.6,
+			.x1=(12.0 * WIDTH/12.0), .y1=(8.0 * HEIGHT/12.0), 
+			.x2=(4.0 * WIDTH/12.0), .y2=(12.0*HEIGHT/12.0),
+			.weight=5.0, .r=0.0, .g=0.0, .b=1.0,
 			// text
-			.tx=0.0, .ty=0.0, .font_size=12.0};
+			.tx=(9.0*WIDTH/12.0), .ty=(10.0*HEIGHT/12.0), .font_size=12.0};
 
 tSide da = {// line 
-			.x1=0.0, .y1=0.0, .x2=0.0, .y2=0.0,
-			.weight=5.0, .r=0.2, .g=0.4, .b=0.6,
+			.x1=(7.0 * WIDTH/12.0), .y1=(8.0 * HEIGHT/12.0), 
+			.x2=0.0, .y2=(4.0*HEIGHT/12.0),
+			.weight=5.0, .r=0.0, .g=0.0, .b=0.0,
 			// text
 			.tx=(3.1 * WIDTH / 12.0), .ty=(5.6 * HEIGHT / 12.0), 
 			.font_size=12.0};
 
 tSide de = {// line 
-			.x1=0.0, .y1=0.0, .x2=0.0, .y2=0.0,
-			.weight=5.0, .r=0.2, .g=0.4, .b=0.6,
+			.x1=(7.0 * WIDTH/12.0), .y1=(8.0 * HEIGHT/12.0), 
+			.x2=(8.0*WIDTH/12.0), .y2=0.0,
+			.weight=5.0, .r=1.0, .g=0.0, .b=0.0,
 			// text
-			.tx=0.0, .ty=0.0, .font_size=12.0};
+			.tx=8.0*WIDTH/12.0, .ty=4.0*HEIGHT/12.0, .font_size=12.0};
 
 tSide df = {// line 
-			.x1=0.0, .y1=0.0, .x2=0.0, .y2=0.0,
-			.weight=5.0, .r=0.2, .g=0.4, .b=0.6,
+			.x1=(7.0 * WIDTH/12.0), .y1=(8.0 * HEIGHT/12.0), 
+			.x2=4.0*WIDTH/12.0, .y2=(12.0*HEIGHT/12.0),
+			.weight=5.0, .r=0.0, .g=0.0, .b=1.0,
 			// text
-			.tx=0.0, .ty=0.0, .font_size=12.0};
+			.tx=6.0*WIDTH/12.0, .ty=10.0*HEIGHT/12.0, .font_size=12.0};
 
 
 static void
@@ -127,11 +135,24 @@ activate (GtkApplication *app,
   cr = cairo_create (surface);
   
   /*-----------------Drawing code goes here---------------------------*/
-  // Lines implemented: ab bc cd da
-  draw_line(cr, &ab, "side ab");
-  draw_line(cr, &ae, "side ae");
-  draw_line(cr, &af, "side af");
+
+
+  draw_line(cr, &ab, "(17+5i)");
+  draw_line(cr, &ae, "(23+16i)");
+  draw_line(cr, &af, "(9+7i)");
+
   draw_line(cr, &bc, "side bc");
+  draw_line(cr, &be, "side be");
+  draw_line(cr, &bf, "side bf");
+  
+  draw_line(cr, &cd, "side cd");
+  draw_line(cr, &ce, "side ce");
+  draw_line(cr, &cf, "side cf");
+ 
+  draw_line(cr, &da, "side da");
+  draw_line(cr, &de, "side de");
+  draw_line(cr, &df, "side df");
+  
   /*------------------------------------------------------------------*/
   
   // create new GTK image from surface  

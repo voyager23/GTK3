@@ -48,9 +48,9 @@ void draw_line(cairo_t *cr, tSide *s, char *text) {
 	cairo_move_to(cr, s->tx, s->ty);
 	
 	// set_font_face
-	cairo_select_font_face(cr, "Purisa",
-      CAIRO_FONT_SLANT_NORMAL,
-      CAIRO_FONT_WEIGHT_BOLD);
+	cairo_select_font_face(cr, "Liberation Sans",
+      CAIRO_FONT_SLANT_ITALIC,
+      CAIRO_FONT_WEIGHT_NORMAL);
 	
 	// set_font_size
 	cairo_set_font_size(cr, s->font_size);
