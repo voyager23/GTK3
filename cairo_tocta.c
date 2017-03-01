@@ -25,27 +25,90 @@
 
 #include <stdlib.h>
 #include <gtk/gtk.h>
-
-#define WIDTH  480.0
-#define HEIGHT 480.0
+#include "cairo_tocta.h"
 
 
-// Co-ords for tocta nodes based on 12 * 12 model
-double ax = (0.0);					double ay = (4.0 * HEIGHT/12.0);
-double bx = (5.0 * WIDTH/12.0);		double by = (4.0 * HEIGHT/12.0);
-double cx = (12.0 * WIDTH/12.0);	double cy = (8.0 * HEIGHT/12.0);
-double dx = (7.0 * WIDTH/12.0);		double dy = (8.0 * HEIGHT/12.0);
-double ex = (4.0 * WIDTH/12.0);		double ey = (12.0 * HEIGHT/12.0);
-double fx = (8.0 * WIDTH/12.0);		double fy = (0.0);
+// Define the 12 sides for drawing
+tSide ab = {// line 
+			.x1=0.0, .y1=(4.0 * HEIGHT/12.0),
+			.x2=(5.0 * WIDTH/12.0), .y2=(4.0 * HEIGHT/12.0),
+			.weight=2.0, .r=0.0, .g=1.0, .b=0.0,
+			// text
+			.tx=(2.0 * WIDTH / 12.0), .ty=(3.8 * HEIGHT / 12.0),
+			.font_size=12.0};
+			
+tSide ae = {// line 
+			.x1=0.0, .y1=(4.0 * HEIGHT/12.0), 
+			.x2=(4.0 * WIDTH/12.0), .y2=(0.0),
+			.weight=5.0, .r=1.0, .g=0.0, .b=0.0,
+			// text
+			.tx=(2.5*WIDTH/12.0), .ty=(2.0*HEIGHT/12.0), 
+			.font_size=12.0};
+			
+tSide af = {// line 
+			.x1=0.0, .y1=(4.0 * HEIGHT/12.0), 
+			.x2=(8.0 * WIDTH/12.0), .y2=(12.0 * HEIGHT/12.0),
+			.weight=5.0, .r=0.0, .g=0.0, .b=1.0,
+			// text
+			.tx=(2.0*WIDTH/12.0), .ty=(8.0*HEIGHT/12.0), .font_size=12.0};
+//-----------------------------------------------
+tSide bc = {// line 
+			.x1=(5.0 * WIDTH/12.0), .y1=(4.0 * HEIGHT/12.0), 
+			.x2=(12.0 * WIDTH/12.0), .y2=(8.0 * HEIGHT/12.0),
+			.weight=2.0, .r=0.2, .g=0.4, .b=0.6,
+			// text
+			.tx=(8.5 * WIDTH / 12.0), .ty=(5.6 * HEIGHT / 12.0), 
+			.font_size=12.0};
 
-// Co-ords for line values based on 12 * 12 model
+tSide be = {// line 
+			.x1=0.0, .y1=0.0, .x2=0.0, .y2=0.0,
+			.weight=2.0, .r=0.2, .g=0.4, .b=0.6,
+			// text
+			.tx=0.0, .ty=0.0, .font_size=12.0};
 
-double a1x = (2.0 * WIDTH / 12.0);	double a1y = (3.8 * HEIGHT / 12.0); 
-double b1x = (8.5 * WIDTH / 12.0);	double b1y = (5.6 * HEIGHT / 12.0); 
-double c1x = (8.5 * WIDTH / 12.0);	double c1y = (7.8 * HEIGHT / 12.0); 
-double d1x = (3.1 * WIDTH / 12.0);	double d1y = (5.6 * HEIGHT / 12.0); 
+tSide bf = {// line 
+			.x1=0.0, .y1=0.0, .x2=0.0, .y2=0.0,
+			.weight=2.0, .r=0.2, .g=0.4, .b=0.6,
+			// text
+			.tx=0.0, .ty=0.0, .font_size=12.0};
+//------------------------------------------------
+tSide cd = {// line 
+			.x1=0.0, .y1=0.0, .x2=0.0, .y2=0.0,
+			.weight=5.0, .r=0.2, .g=0.4, .b=0.6,
+			// text
+			.tx=(8.5 * WIDTH / 12.0), .ty=(7.8 * HEIGHT / 12.0), 
+			.font_size=12.0};
 
+tSide ce = {// line 
+			.x1=0.0, .y1=0.0, .x2=0.0, .y2=0.0,
+			.weight=5.0, .r=0.2, .g=0.4, .b=0.6,
+			// text
+			.tx=0.0, .ty=0.0, .font_size=12.0};
 
+tSide cf = {// line 
+			.x1=0.0, .y1=0.0, .x2=0.0, .y2=0.0,
+			.weight=5.0, .r=0.2, .g=0.4, .b=0.6,
+			// text
+			.tx=0.0, .ty=0.0, .font_size=12.0};
+
+tSide da = {// line 
+			.x1=0.0, .y1=0.0, .x2=0.0, .y2=0.0,
+			.weight=5.0, .r=0.2, .g=0.4, .b=0.6,
+			// text
+			.tx=(3.1 * WIDTH / 12.0), .ty=(5.6 * HEIGHT / 12.0), 
+			.font_size=12.0};
+
+tSide de = {// line 
+			.x1=0.0, .y1=0.0, .x2=0.0, .y2=0.0,
+			.weight=5.0, .r=0.2, .g=0.4, .b=0.6,
+			// text
+			.tx=0.0, .ty=0.0, .font_size=12.0};
+
+tSide df = {// line 
+			.x1=0.0, .y1=0.0, .x2=0.0, .y2=0.0,
+			.weight=5.0, .r=0.2, .g=0.4, .b=0.6,
+			// text
+			.tx=0.0, .ty=0.0, .font_size=12.0};
 
 
 static void
@@ -62,55 +125,16 @@ activate (GtkApplication *app,
   cairo_t *cr;  
   surface = cairo_image_surface_create (CAIRO_FORMAT_ARGB32, WIDTH, HEIGHT);
   cr = cairo_create (surface);
-
   
-  /* Drawing code goes here */
-  cairo_set_source_rgb(cr, 0.5,0.94,1.0);
-  cairo_paint(cr);
+  /*-----------------Drawing code goes here---------------------------*/
+  // Lines implemented: ab bc cd da
+  draw_line(cr, &ab, "side ab");
+  draw_line(cr, &ae, "side ae");
+  draw_line(cr, &af, "side af");
+  draw_line(cr, &bc, "side bc");
+  /*------------------------------------------------------------------*/
   
-  cairo_set_source_rgb (cr, 0.5, 0.2, 0.5);
-  cairo_set_line_width (cr, 5);
-  cairo_move_to(cr, ax, ay);
-  cairo_line_to(cr, ex, ey);
-  cairo_line_to(cr, cx, cy);
-  cairo_line_to(cr, fx, fy);
-  cairo_line_to(cr, ax, ay);
-  
-  cairo_move_to(cr, ax, ay);
-  cairo_line_to(cr, dx, dy);
-  cairo_line_to(cr, cx, cy);
-  
-  cairo_move_to(cr, ex, ey);
-  cairo_line_to(cr, dx, dy);
-  cairo_line_to(cr, fx, fy);  
-  cairo_stroke(cr);
-  
-  cairo_set_line_width(cr,2);
-  cairo_move_to(cr, ex, ey);
-  cairo_line_to(cr, bx, by);
-  cairo_line_to(cr, fx, fy);
-  
-  cairo_move_to(cr, ax, ay);
-  cairo_line_to(cr, bx, by);
-  cairo_line_to(cr, cx, cy);
-  
-  cairo_stroke(cr);
-  
-cairo_select_font_face(cr, "Purisa",
-      CAIRO_FONT_SLANT_NORMAL,
-      CAIRO_FONT_WEIGHT_BOLD);
-
-  cairo_set_font_size(cr, 12);
-  cairo_set_source_rgb(cr, 0.8,0.1,0.1);
-  cairo_move_to(cr, a1x, a1y);
-  cairo_show_text(cr, "(17+13i)");
-  cairo_move_to(cr, b1x, b1y);
-  cairo_show_text(cr, "(17+13i)");
-  cairo_move_to(cr, c1x, c1y);
-  cairo_show_text(cr, "(17+13i)");
-  cairo_move_to(cr, d1x, d1y);
-  cairo_show_text(cr, "(17+13i)");
-  
+  // create new GTK image from surface  
   pixbuf = gdk_pixbuf_get_from_surface(surface, 0, 0, WIDTH, HEIGHT);
   tocta = gtk_image_new_from_pixbuf(pixbuf);
   
@@ -141,7 +165,9 @@ cairo_select_font_face(cr, "Purisa",
    * This call recursively calls gtk_widget_show() on all widgets
    * that are contained in the window, directly or indirectly.
    */
-  gtk_widget_show_all (window);  
+  gtk_widget_show_all (window);
+  
+  cairo_surface_destroy(surface);
 
 }
 

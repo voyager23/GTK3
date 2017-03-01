@@ -1,5 +1,5 @@
 /*
- * cairo_tocta_utils.c
+ * cairo_tocta.h
  * 
  * Copyright 2017 mike <mike@sedawk>
  * 
@@ -20,44 +20,23 @@
  * 
  * 
  */
+ 
+#ifndef __CAIRO_TOCTA__
+#define __CAIRO_TOCTA__
 
+	#define WIDTH  480.0
+	#define HEIGHT 480.0
+	
+	typedef struct side {
+		// Define line co-ords, weight and color
+		double x1,y1,x2,y2;
+		double weight;
+		double r,g,b;
+		// Define text position, font_size and contents
+		double tx,ty;
+		double font_size;
+	}tSide;
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <gtk/gtk.h>
+	void draw_line(cairo_t *cr, tSide *s, char *text);
 
-#include "cairo_tocta.h"
-
-void draw_line(cairo_t *cr, tSide *s, char *text) {
-	// set_source_rgb
-	cairo_set_source_rgb (cr, s->r, s->g, s->b);
-		
-	// set_line_width
-	cairo_set_line_width (cr, s->weight);
-	
-	// move_to start of line
-	cairo_move_to(cr, s->x1, s->y1);
-		
-	// line_to
-	cairo_line_to(cr, s->x2, s->y2);
-	
-	// stroke
-	cairo_stroke(cr);
-	
-	// move_to text position
-	cairo_move_to(cr, s->tx, s->ty);
-	
-	// set_font_face
-	cairo_select_font_face(cr, "Purisa",
-      CAIRO_FONT_SLANT_NORMAL,
-      CAIRO_FONT_WEIGHT_BOLD);
-	
-	// set_font_size
-	cairo_set_font_size(cr, s->font_size);
-	
-	// show_text
-	cairo_show_text(cr, text);
-	
-}
-
-
+#endif
